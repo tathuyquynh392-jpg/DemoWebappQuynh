@@ -1,0 +1,94 @@
+﻿@model DemoWebapp.Models.Bill
+
+@{
+    ViewData["Title"] = "Xóa hóa đơn";
+}
+
+<style>
+    body {
+        background-color: #f5efe6;
+    }
+
+    .card-custom {
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        border: none;
+    }
+
+    .bg-brown {
+        background-color: #8b5e3c;
+        color: white;
+    }
+
+    .btn-brown {
+        background-color: #a67c52;
+        color: white;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #8b5e3c;
+            color: white;
+        }
+
+    .text-brown {
+        color: #6b4c3b;
+    }
+
+    .btn-custom {
+        border-radius: 10px;
+        padding: 10px;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+    a {
+        text-decoration: none !important;
+    }
+
+    .container-box {
+        max-width: 500px;
+        margin: auto;
+    }
+</style>
+
+<h2 class="text-center text-brown mb-4">⚠ Xóa hóa đơn</h2>
+
+<div class="container-box">
+    <div class="card card-custom">
+
+        <div class="card-header bg-brown text-center">
+            <h5 class="mb-0">Xác nhận xóa</h5>
+        </div>
+
+        <div class="card-body">
+
+            <p><strong>🏠 Phòng:</strong> @Model.Room?.TenPhong</p>
+            <p><strong>⚡ Điện:</strong> @Model.Dien</p>
+            <p><strong>💧 Nước:</strong> @Model.Nuoc</p>
+            <p><strong>💰 Tổng tiền:</strong> @Model.TongTien</p>
+
+        </div>
+
+        <div class="card-footer d-flex gap-2">
+
+            <form asp-action="Delete" method="post" class="w-100">
+                <input type="hidden" asp-for="BillId" />
+                <button type="submit" class="btn btn-danger btn-custom w-100">
+                    🗑 Xóa
+                </button>
+            </form>
+
+            <a asp-action="Index" class="btn btn-secondary btn-custom w-100">
+                ↩ Quay lại
+            </a>
+
+        </div>
+
+    </div>
+</div>

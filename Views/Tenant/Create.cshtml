@@ -1,0 +1,105 @@
+﻿@model DemoWebapp.Models.Tenant
+<style>
+    body {
+        background-color: #f5efe6;
+    }
+
+    .card-custom {
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        border: none;
+    }
+
+    .bg-brown {
+        background-color: #8b5e3c;
+        color: white;
+    }
+
+    .btn-brown {
+        background-color: #a67c52;
+        color: white;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #8b5e3c;
+        }
+
+    .text-brown {
+        color: #6b4c3b;
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+
+    /* nút chung */
+    .btn-custom {
+        border-radius: 10px;
+        padding: 8px 16px;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+    /* nút màu nâu chính */
+    .btn-brown {
+        background-color: #a67c52;
+        color: white;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #8b5e3c;
+            color: white;
+        }
+
+    /* nút nhỏ đồng đều */
+    .btn-sm-custom {
+        min-width: 70px;
+        text-align: center;
+    }
+
+    /* nút create to hơn */
+    .btn-create {
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+</style>
+<h2 class="text-brown mb-4">➕ Thêm người thuê</h2>
+
+<div class="card card-custom p-4" style="max-width:500px;">
+    <form asp-action="Create" method="post">
+
+        <div class="mb-3">
+            <label class="form-label">Tên người thuê</label>
+            <input asp-for="TenNguoi" class="form-control" />
+            <span asp-validation-for="TenNguoi" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">SĐT</label>
+            <input asp-for="SDT" class="form-control" />
+            <span asp-validation-for="SDT" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Phòng</label>
+            <select asp-for="RoomId" class="form-control" asp-items="ViewBag.RoomList">
+                <option value="">-- Chọn phòng --</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-brown">Lưu</button>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>

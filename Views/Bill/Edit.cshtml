@@ -1,0 +1,64 @@
+﻿@model DemoWebapp.Models.Bill
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<h4>Bill</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BillId" />
+            <div class="form-group">
+                <label asp-for="RoomId" class="control-label"></label>
+                <select asp-for="RoomId" class="form-control" asp-items="ViewBag.RoomId"></select>
+                <span asp-validation-for="RoomId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dien" class="control-label"></label>
+                <input asp-for="Dien" class="form-control" />
+                <span asp-validation-for="Dien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nuoc" class="control-label"></label>
+                <input asp-for="Nuoc" class="form-control" />
+                <span asp-validation-for="Nuoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TongTien" class="control-label"></label>
+                <input asp-for="TongTien" class="form-control" />
+                <span asp-validation-for="TongTien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function tinhTien() {
+            let dien = parseFloat(document.getElementById("Dien").value) || 0;
+            let nuoc = parseFloat(document.getElementById("Nuoc").value) || 0;
+
+            let giaDien = 3500;
+            let giaNuoc = 15000;
+
+            // 🔥 tiền phòng (nếu muốn cộng)
+            let tienPhong = parseFloat(document.getElementById("GiaPhong")?.value) || 0;
+
+            let tong = (dien * giaDien) + (nuoc * giaNuoc) + tienPhong;
+
+            document.getElementById("TongTien").value = tong.toLocaleString();
+        }
+    </script>
+}

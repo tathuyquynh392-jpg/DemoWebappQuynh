@@ -1,0 +1,128 @@
+﻿@model DemoWebapp.Models.Bill
+
+@{
+    ViewData["Title"] = "Tạo hóa đơn";
+}
+
+<style>
+    body {
+        background-color: #f5efe6;
+    }
+
+    .card-custom {
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        border: none;
+    }
+
+    .bg-brown {
+        background-color: #8b5e3c;
+        color: white;
+    }
+
+    .btn-brown {
+        background-color: #a67c52;
+        color: white;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #8b5e3c;
+            color: white;
+        }
+
+    .text-brown {
+        color: #6b4c3b;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        height: 40px;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+
+    .btn-custom {
+        border-radius: 10px;
+        padding: 10px;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+    .form-container {
+        max-width: 450px;
+        margin: auto;
+    }
+</style>
+
+<h2 class="text-center text-brown mb-4">💰 Tạo hóa đơn</h2>
+
+<div class="form-container">
+    <div class="card card-custom p-4">
+
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+            <!-- Phòng -->
+            <div class="mb-3">
+                <label class="form-label text-brown">Phòng</label>
+                <select asp-for="RoomId" class="form-control" asp-items="ViewBag.RoomList">
+                    <option value="">-- Chọn phòng --</option>
+                </select>
+            </div>
+
+            <!-- Điện -->
+            <div class="mb-3">
+                <label class="form-label text-brown">Số điện</label>
+                <input asp-for="Dien" id="Dien" class="form-control" placeholder="Nhập số điện..." oninput="tinhTien()" />
+            </div>
+
+            <!-- Nước -->
+            <div class="mb-3">
+                <label class="form-label text-brown">Số nước</label>
+                <input asp-for="Nuoc" id="Nuoc" class="form-control" placeholder="Nhập số nước..." oninput="tinhTien()" />
+            </div>
+
+            <!-- Tổng tiền -->
+            <div class="mb-3">
+                <label class="form-label text-brown">Tổng tiền</label>
+                <input asp-for="TongTien" id="TongTien" class="form-control" readonly />
+            </div>
+
+            <!-- BUTTON -->
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-brown btn-custom w-100">
+                    💾 Tạo hóa đơn
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary btn-custom w-100">
+                    ↩ Quay lại
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function tinhTien() {
+            let dien = parseInt(document.getElementById("Dien").value) || 0;
+            let nuoc = parseInt(document.getElementById("Nuoc").value) || 0;
+
+            let tong = dien * 3500 + nuoc * 15000;
+
+            document.getElementById("TongTien").value = tong;
+        }
+    </script>
+}

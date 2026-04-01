@@ -1,0 +1,39 @@
+﻿@model DemoWebapp.Models.Room
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Sửa phòng";
+}
+
+
+<form asp-action="Edit" method="post" style="max-width:500px; background-color:#f6e3d6; padding:20px; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.1);">
+    <input type="hidden" asp-for="RoomId" />
+    <div class="form-group" style="margin-bottom:15px;">
+        <label>Tên phòng</label>
+        <input asp-for="TenPhong" class="form-control" style="border-radius:8px;" />
+        <span asp-validation-for="TenPhong" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-bottom:15px;">
+        <label>Giá phòng</label>
+        <input asp-for="Gia" class="form-control" style="border-radius:8px;" />
+        <span asp-validation-for="Gia" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-bottom:15px;">
+        <label>Trạng thái</label>
+        <select asp-for="TrangThai" class="form-control" style="border-radius:8px;" asp-items="@(new SelectList(ViewBag.TrangThaiList))">
+            <option value="">-- Chọn trạng thái --</option>
+        </select>
+        <span asp-validation-for="TrangThai" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success"
+            style="background-color:#a67c52; border:none; color:white;">
+        <i class="fas fa-save"></i> Lưu
+    </button>
+    <a asp-action="Index" class="btn btn-secondary"
+       style="background-color:#8c5e3c; border:none; color:white;">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

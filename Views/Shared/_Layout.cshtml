@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Nhà trọ ABC</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <h2>Nhà trọ ABC</h2>
+        </div>
+        <ul class="menu">
+            <li><a href="/Home/Index"><i class="fas fa-home"></i> Trang chủ</a></li>
+            <li><a href="/Room/Index"><i class="fas fa-door-open"></i> Quản lý phòng</a></li>
+            <li><a href="/Tenant/Index"><i class="fas fa-users"></i> Quản lý người thuê</a></li>
+            <li><a href="/Bill/Index"><i class="fas fa-file-invoice"></i> Quản lý hóa đơn</a></li>
+            <li><a href="/Service/Index"><i class="fas fa-concierge-bell"></i> Quản lý dịch vụ</a></li>
+            <li><a href="/Account/Logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <header>
+            <h1>@ViewData["Title"]</h1>
+        </header>
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

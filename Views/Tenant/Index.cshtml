@@ -1,0 +1,106 @@
+﻿@model IEnumerable<DemoWebapp.Models.Tenant>
+
+<style>
+    body {
+        background-color: #f5efe6;
+    }
+
+    .text-brown {
+        color: #6b4c3b;
+    }
+
+    .btn-brown {
+        background-color: #8b5e3c;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 18px;
+        font-weight: 500;
+    }
+
+        .btn-brown:hover {
+            background-color: #6b4c3b;
+            color: white;
+        }
+
+    a {
+        text-decoration: none !important;
+    }
+
+    .card-tenant {
+        border-radius: 20px;
+        background-color: #e6d2bd;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        height: 100%;
+    }
+
+        .card-tenant:hover {
+            transform: translateY(-5px);
+        }
+
+    .tenant-name {
+        font-size: 28px;
+        font-weight: bold;
+        color: #4b2e1e;
+    }
+
+    .btn-action {
+        border-radius: 8px;
+        padding: 6px 12px;
+        font-size: 13px;
+        border: none;
+    }
+
+    .btn-edit {
+        background-color: #a67c52;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #d9534f;
+        color: white;
+    }
+
+    .btn-detail {
+        background-color: #8b5e3c;
+        color: white;
+    }
+</style>
+
+<h2 class="text-brown mb-4">👤 Quản lý người thuê</h2>
+
+<a asp-action="Create" class="btn btn-brown mb-4">
+    + Thêm người thuê
+</a>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card-tenant">
+
+                    <div class="tenant-name">@item.TenNguoi</div>
+
+                    <p>📞 @item.SDT</p>
+                    <p>🏠 @(item.Room != null ? item.Room.TenPhong : "Chưa có phòng")</p>
+
+                    <div class="d-flex justify-content-center gap-2 mt-2">
+                        <a asp-action="Edit" asp-route-id="@item.TenantId"
+                           class="btn-action btn-edit">Sửa</a>
+
+                        <a asp-action="Delete" asp-route-id="@item.TenantId"
+                           class="btn-action btn-delete">Xóa</a>
+
+                        <a asp-action="Details" asp-route-id="@item.TenantId"
+                           class="btn-action btn-detail">Chi tiết</a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

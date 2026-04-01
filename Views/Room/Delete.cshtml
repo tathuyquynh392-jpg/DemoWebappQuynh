@@ -1,0 +1,24 @@
+﻿@model DemoWebapp.Models.Room
+@{
+    ViewData["Title"] = "Xóa phòng";
+}
+
+
+<div style="max-width:400px; background-color:#f8d7da; color:#721c24; padding:20px; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.1);">
+    <h2>@Model.TenPhong</h2>
+    <p>Giá: @Model.Gia.ToString("C")</p>
+    <p>Trạng thái: @Model.TrangThai</p>
+    <p>Bạn có chắc muốn xóa phòng này?</p>
+</div>
+
+<form asp-action="Delete" method="post" style="margin-top:15px;">
+    <input type="hidden" asp-for="RoomId" />
+    <button type="submit" class="btn btn-danger"
+            style="background-color:#c94c3d; border:none; color:white;">
+        <i class="fas fa-trash"></i> Xóa
+    </button>
+    <a asp-action="Index" class="btn btn-secondary"
+       style="background-color:#8c5e3c; border:none; color:white;">
+        <i class="fas fa-arrow-left"></i> Hủy
+    </a>
+</form>

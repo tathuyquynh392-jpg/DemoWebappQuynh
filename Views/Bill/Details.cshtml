@@ -1,0 +1,117 @@
+﻿@model DemoWebapp.Models.Bill
+
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+    body {
+        background-color: #f5efe6;
+    }
+
+    .card-custom {
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        border: none;
+    }
+
+    .bg-brown {
+        background-color: #8b5e3c;
+        color: white;
+    }
+
+    .btn-brown {
+        background-color: #a67c52;
+        color: white;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #8b5e3c;
+        }
+
+    .text-brown {
+        color: #6b4c3b;
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+
+    /* nút chung */
+    .btn-custom {
+        border-radius: 10px;
+        padding: 8px 16px;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+    /* nút màu nâu chính */
+    .btn-brown {
+        background-color: #a67c52;
+        color: white;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #8b5e3c;
+            color: white;
+        }
+
+    /* nút nhỏ đồng đều */
+    .btn-sm-custom {
+        min-width: 70px;
+        text-align: center;
+    }
+
+    /* nút create to hơn */
+    .btn-create {
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+</style>
+<h1>Details</h1>
+
+<div>
+    <h4>Bill</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dien)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dien)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nuoc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nuoc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TongTien)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Room)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Room.TenPhong)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.BillId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
